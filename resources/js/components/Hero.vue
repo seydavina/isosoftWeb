@@ -4,7 +4,7 @@ import { Link } from "@inertiajs/vue3";
 
 <template>
   <div
-    class="relative isolate overflow-hidden bg-gradient-to-b from-primary/5 to-blue-700"
+    class="relative isolate overflow-hidden bg-gradient-to-b from-blue-400/25 to-cyan-700"
   >
     <!-- Decorative Background -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
@@ -43,7 +43,7 @@ import { Link } from "@inertiajs/vue3";
           </span>
         </h1>
         <p
-          class="mt-6 text-lg leading-8 text-gray-600 animate-fade-in-delayed mx-auto text-center"
+          class="mt-6 text-lg leading-8 text-gray-800 animate-fade-in-delayed mx-auto text-center"
         >
           Des logiciels de gestion modulaires et intégrés, conçus pour
           répondre aux besoins variés des entreprises et organisations.
@@ -55,7 +55,7 @@ import { Link } from "@inertiajs/vue3";
         >
           <Link
             href="#contact"
-            class="text-white bg-gradient-to-r from-cyan-200 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            class="text-white bg-gradient-to-r from-cyan-800 to-cyan-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           >
             <span class="relative z-10 flex items-center gap-2">
               Découvrez nos solutions
@@ -76,17 +76,6 @@ import { Link } from "@inertiajs/vue3";
             <div
               class="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             ></div>
-          </Link>
-          <Link
-            href="#services"
-            class="text-sm font-semibold leading-6 text-blue-500 group"
-          >
-            En savoir plus
-            <span
-              class="inline-block transition-transform duration-300 group-hover:translate-x-1"
-            >
-              →
-            </span>
           </Link>
         </div>
       </div>

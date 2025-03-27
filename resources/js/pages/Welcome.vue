@@ -235,7 +235,7 @@ html {
 @keyframes pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+        box-shadow: 0 0 0 0 rgba(36, 85, 192, 0.7);
     }
     70% {
         transform: scale(1.1);
