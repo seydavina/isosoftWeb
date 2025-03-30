@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
 import { ref, onMounted, onUnmounted } from 'vue';
-import Navbar from '@/Components/Navbar.vue';
-import Hero from '@/Components/Hero.vue';
-import Services from '@/Components/Services.vue';
-import About from '@/Components/About.vue';
-import Contact from '@/Components/Contact.vue';
-import Footer from '@/Components/Footer.vue';
+import Navbar from '@/components/Navbar.vue';
+import Hero from '@/components/Hero.vue';
+import Services from '@/components/Services.vue';
+import About from '@/components/About.vue';
+import Contact from '@/components/Contact.vue';
+import Footer from '@/components/Footer.vue';
 
 const currentSection = ref(0);
 const sections = ['hero', 'services', 'about', 'contact'];
