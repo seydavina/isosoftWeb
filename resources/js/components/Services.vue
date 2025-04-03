@@ -284,7 +284,16 @@ const selectSolution = (id: string) => {
 }
 
 :root {
-  --primary: #0891b2;
-  --primary-dark: #0e7490;
+  --primary: #0c7a96;
+  --primary-dark: #0b5568;
 }
+
+.bouton-demo {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+}
+
+/* button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(8, 145, 178, 0.2);
+} */
 </style>
