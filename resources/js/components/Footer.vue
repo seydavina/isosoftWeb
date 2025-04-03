@@ -90,12 +90,7 @@ const currentYear = new Date().getFullYear();
         <div class="space-y-8">
           <!-- Logo -->
           <div class="flex items-center">
-            <div
-              class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl"
-            >
-              I
-            </div>
-            <span class="ml-3 text-xl font-bold text-white">ISOSOFT</span>
+            <span class="ml-3 text-xl font-bold text-cyan-400">ISOSOFT</span>
           </div>
           <!-- Description -->
           <p class="text-sm leading-6 text-gray-300">
