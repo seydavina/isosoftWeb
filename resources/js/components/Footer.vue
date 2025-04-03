@@ -97,13 +97,11 @@ const currentYear = new Date().getFullYear();
             </div>
             <span class="ml-3 text-xl font-bold text-white">ISOSOFT</span>
           </div>
-
           <!-- Description -->
           <p class="text-sm leading-6 text-gray-300">
             Votre partenaire technologique pour le développement de solutions digitales
             innovantes qui transforment votre activité.
           </p>
-
           <!-- Informations de contact -->
           <div class="space-y-2">
             <h3 class="text-sm font-semibold leading-6 text-white">Contact</h3>
@@ -114,11 +112,19 @@ const currentYear = new Date().getFullYear();
             </address>
             <p class="text-sm leading-6 text-gray-300">
               <span class="block">Tél: {{ contactInfo.phone }}</span>
-              <span class="block">Email: {{ contactInfo.email }}</span>
+              <!-- Email cliquable -->
+              <span class="block">
+                Email:
+                <a
+                  :href="`mailto:${contactInfo.email}`"
+                  class="text-primary hover:underline transition-colors duration-300"
+                >
+                  {{ contactInfo.email }}
+                </a>
+              </span>
             </p>
           </div>
         </div>
-
         <!-- Colonne 2: Nos Solutions -->
         <div class="mt-16 sm:mt-0 xl:col-span-1">
           <h3 class="text-sm font-semibold leading-6 text-white">Nos Solutions</h3>
@@ -137,8 +143,7 @@ const currentYear = new Date().getFullYear();
             </li>
           </ul>
         </div>
-
-        <!-- Colonne 3: Company -->
+        <!-- Colonne 3: Entreprise et réseaux sociaux -->
         <div class="mt-10 md:mt-0 xl:col-span-1">
           <div>
             <h3 class="text-sm font-semibold leading-6 text-white">Entreprise</h3>
@@ -157,8 +162,6 @@ const currentYear = new Date().getFullYear();
               </li>
             </ul>
           </div>
-
-          <!-- Réseaux sociaux -->
           <div class="mt-10">
             <h3 class="text-sm font-semibold leading-6 text-white">Suivez-nous</h3>
             <div class="mt-6 flex space-x-6">
@@ -174,17 +177,14 @@ const currentYear = new Date().getFullYear();
             </div>
           </div>
         </div>
-
         <!-- Colonne 4: Newsletter -->
         <div class="mt-10 xl:mt-0 xl:col-span-1">
-          <!-- Module d'abonnement newsletter -->
           <div>
             <h3 class="text-sm font-semibold leading-6 text-white">
               Abonnez-vous à notre newsletter
             </h3>
             <p class="mt-2 text-sm leading-6 text-gray-300">
-              Les dernières actualités, articles et ressources, envoyés mensuellement dans
-              votre boîte mail.
+              Les dernières actualités et ressources, directement dans votre boîte mail.
             </p>
             <form
               @submit.prevent="subscribeToNewsletter"
@@ -198,13 +198,13 @@ const currentYear = new Date().getFullYear();
                 v-model="email"
                 autocomplete="email"
                 required
-                class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:w-full sm:text-sm sm:leading-6"
+                class="w-full appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:w-full sm:text-sm"
                 placeholder="Votre adresse email"
               />
               <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
                 <button
                   type="submit"
-                  class="flex w-full items-center justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-gray-900"
+                  class="flex w-full items-center justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                 >
                   S'abonner
                 </button>
@@ -214,12 +214,11 @@ const currentYear = new Date().getFullYear();
               v-if="subscriptionStatus === 'success'"
               class="mt-3 text-sm text-green-400"
             >
-              Merci de vous être abonné à notre newsletter !
+              Merci de vous être abonné !
             </p>
           </div>
         </div>
       </div>
-
       <!-- Ligne de séparation et copyright -->
       <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
         <div class="flex flex-col md:flex-row justify-between items-center">
@@ -236,7 +235,7 @@ const currentYear = new Date().getFullYear();
 </template>
 
 <style scoped>
-/* Animation d'entrée pour les éléments au chargement de la page */
+/* Animation d'entrée simplifiée */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -247,12 +246,12 @@ const currentYear = new Date().getFullYear();
     transform: translateY(0);
   }
 }
-
-/* Effet de hover amélioré pour les liens */
+.space-y-8 > * {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
 a {
   position: relative;
 }
-
 a::after {
   content: "";
   position: absolute;
@@ -263,64 +262,12 @@ a::after {
   background-color: currentColor;
   transition: width 0.3s ease;
 }
-
 a:hover::after {
   width: 100%;
 }
-
-/* Effet de pulsation pour le bouton d'abonnement */
+/* Réduction de l'effet de pulsation pour un résultat plus discret */
 button:hover {
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-/* Classes d'animation pour les différents éléments */
-.space-y-8 > div,
-.space-y-8 > p {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-
-.space-y-8 > div:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.space-y-8 > p {
-  animation-delay: 0.2s;
-}
-.space-y-8 > div:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-h3 {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out forwards;
-  animation-delay: 0.2s;
-}
-
-ul,
-form {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out forwards;
-  animation-delay: 0.4s;
-}
-
-/* Responsive */
-@media (max-width: 1279px) {
-  .xl\:col-span-1 {
-    margin-top: 3rem;
-  }
-
-  .xl\:col-span-1:first-child {
-    margin-top: 0;
-  }
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
 }
 </style>
