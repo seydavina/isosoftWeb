@@ -6,7 +6,7 @@
     "devCommand": "npm run dev",
     "functions": {
         "public/index.php": {
-            "runtime": "vercel-php@0.6.0"
+            "runtime": "vercel-php"
         }
     },
     "routes": [
@@ -16,19 +16,14 @@
         }
     ],
     "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://isosoft-site.vercel.app/",
-        "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENTS_CACHE": "/tmp/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/services.php",
-        "VIEW_COMPILED_PATH": "/tmp",
-        "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
-        "SSR_TEMP_PATH": "/tmp/ssr",
-        "NODE_PATH": "node"
+    "APP_ENV": "production",
+    "APP_DEBUG": "false",
+    "APP_URL": "https://isosoft-site.vercel.app",
+    "DB_CONNECTION": "mysql",
+    "DB_HOST": "localhost",
+    "DB_PORT": "3306",
+    "DB_DATABASE": "i_website",
+    "DB_USERNAME": "root",
+    "DB_PASSWORD": "root"
     }
 }
