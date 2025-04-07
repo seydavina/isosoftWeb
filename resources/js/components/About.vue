@@ -50,13 +50,14 @@ const features = [
         <p
           class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600"
         >
-          Notre histoire
+          Ce que nous faisons
         </p>
         <p class="mt-6 text-lg leading-8 text-gray-600">
           ISOSOFT est spécialisée dans le développement de solutions de gestion
-          d'entreprise. Notre suite logicielle complète comprend des modules pour la
-          comptabilité, la gestion commerciale, la paie, les états financiers,
-          l'immobilisation et la budgétisation.
+          d'entreprise, l'audit informatique et le conseil en organisation. Notre suite
+          logicielle complète comprend des modules pour la comptabilité, la gestion
+          commerciale, la paie, les états financiers, l'immobilisation et la
+          budgétisation.
         </p>
       </div>
       <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">

@@ -4,9 +4,10 @@ import { Link } from "@inertiajs/vue3";
 
 const isMobileMenuOpen = ref(false);
 const isServicesDropdownOpen = ref(false);
+let dropdownCloseTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const services = [
-  { title: "ISOCOMPTA", href: "/services/isocompta" },
+  { title: "ISOCOMPTA", href: "/services/Isocompta" },
   { title: "ISOGESCOM", href: "/services/isogescom" },
   { title: "ISOPAIE", href: "/services/isopaie" }, // Correction du typo
   { title: "ISOETATFIN", href: "/services/isoetatfin" },
@@ -16,14 +17,44 @@ const services = [
   { title: "Autres Modules", href: "/services/autres-modules" },
 ];
 
+// Menu mobile
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
+  // On ferme le dropdown Services lorsqu'on ouvre/ferme le menu mobile
   isServicesDropdownOpen.value = false;
 };
 
-const closeDropdowns = () => {
-  isServicesDropdownOpen.value = false;
+const closeMobileMenu = () => {
   isMobileMenuOpen.value = false;
+};
+
+// Gestion du dropdown Services avec délai pour éviter les fermetures précipitées
+const openServicesDropdown = () => {
+  if (dropdownCloseTimeout) {
+    clearTimeout(dropdownCloseTimeout);
+    dropdownCloseTimeout = null;
+  }
+  isServicesDropdownOpen.value = true;
+};
+
+const closeServicesDropdownWithDelay = () => {
+  dropdownCloseTimeout = setTimeout(() => {
+    isServicesDropdownOpen.value = false;
+  }, 200);
+};
+
+const closeServicesDropdown = () => {
+  if (dropdownCloseTimeout) {
+    clearTimeout(dropdownCloseTimeout);
+    dropdownCloseTimeout = null;
+  }
+  isServicesDropdownOpen.value = false;
+};
+
+// Fonction pour fermer tous les menus (utile pour les clics sur un lien)
+const closeAllMenus = () => {
+  closeMobileMenu();
+  closeServicesDropdown();
 };
 </script>
 
@@ -50,10 +81,10 @@ const closeDropdowns = () => {
         <div class="hidden sm:flex sm:items-center sm:space-x-8">
           <div
             class="relative group"
-            @mouseenter="isServicesDropdownOpen = true"
-            @mouseleave="isServicesDropdownOpen = false"
-            @focusin="isServicesDropdownOpen = true"
-            @focusout="isServicesDropdownOpen = false"
+            @mouseenter="openServicesDropdown"
+            @mouseleave="closeServicesDropdownWithDelay"
+            @focusin="openServicesDropdown"
+            @focusout="closeServicesDropdownWithDelay"
           >
             <button
               class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
@@ -94,7 +125,7 @@ const closeDropdowns = () => {
                     :key="service.title"
                     :href="service.href"
                     class="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 transition-colors duration-200 focus:outline-none focus:bg-gray-50/80"
-                    @click="closeDropdowns"
+                    @click="closeAllMenus"
                   >
                     {{ service.title }}
                   </Link>
@@ -183,7 +214,7 @@ const closeDropdowns = () => {
           <Link
             href="/"
             class="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 transition-colors duration-200 focus:outline-none focus:bg-gray-50/80"
-            @click="closeDropdowns"
+            @click="closeAllMenus"
           >
             Accueil
           </Link>
@@ -224,7 +255,7 @@ const closeDropdowns = () => {
                   :key="service.title"
                   :href="service.href"
                   class="block px-8 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 transition-colors duration-200 focus:outline-none focus:bg-gray-50/80"
-                  @click="closeDropdowns"
+                  @click="closeAllMenus"
                 >
                   {{ service.title }}
                 </Link>
@@ -240,7 +271,7 @@ const closeDropdowns = () => {
             :key="link.href"
             :href="link.href"
             class="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 transition-colors duration-200 focus:outline-none focus:bg-gray-50/80"
-            @click="closeDropdowns"
+            @click="closeAllMenus"
           >
             {{ link.text }}
           </Link>
