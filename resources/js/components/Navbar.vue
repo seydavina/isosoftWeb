@@ -9,12 +9,12 @@ let dropdownCloseTimeout: ReturnType<typeof setTimeout> | null = null;
 const services = [
   { title: "ISOCOMPTA", href: "/Isocompta" },
   { title: "ISOGESCOM", href: "/Isogescom" },
-  { title: "ISOPAIE", href: "/services/isopaie" }, // Correction du typo
-  { title: "ISOETATFIN", href: "/services/isoetatfin" },
-  { title: "ISOIMMO", href: "/services/isoimmo" },
-  { title: "ISOBUDGET", href: "/services/isobudget" },
-  { title: "ISOGESCOLE", href: "/services/isogescole" },
-  { title: "Autres Modules", href: "/services/autres-modules" },
+  { title: "ISOPAIE", href: "/Isopaie" }, // Correction du typo
+  { title: "ISOETATFIN", href: "/Isoetatfin" },
+  { title: "ISOIMMO", href: "/Isoimmo" },
+  { title: "ISOBUDGET", href: "/Isobudget" },
+  { title: "ISOGESCOLE", href: "/Isogescole" },
+  { title: "Autres Modules", href: "/Autres-modules" },
 ];
 
 // Menu mobile

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from "@inertiajs/vue3";
-import Navbar from "@/Components/Navbar.vue";
+import Navbar from "@/components/Navbar.vue";
 import Footer from "@/components/Footer.vue";
 import { onMounted } from "vue";
 import gsap from "gsap";
