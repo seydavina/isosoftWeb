@@ -1,19 +1,18 @@
 {
     "version": 2,
     "framework": "vite",
+    "buildCommand": "composer install --optimize-autoloader --no-dev && php artisan config:cache && php artisan route:cache",
+    "outputDirectory": "public",
+    "devCommand": "npm run dev",
     "functions": {
-        "api/*.php": {
+        "public/index.php": {
             "runtime": "vercel-php@0.6.0"
         }
     },
     "routes": [
         {
-            "src": "/(css|js)/(.*)",
-            "dest": "/public/$1/$2"
-        },
-        {
             "src": "/(.*)",
-            "dest": "/api/index.php"
+            "dest": "/public/index.php"
         }
     ],
     "env": {
@@ -31,8 +30,5 @@
         "SESSION_DRIVER": "cookie",
         "SSR_TEMP_PATH": "/tmp/ssr",
         "NODE_PATH": "node"
-    },
-    "buildCommand": "npm run build",
-    "outputDirectory": "public/build",
-    "devCommand": "npm run dev"
+    }
 }
