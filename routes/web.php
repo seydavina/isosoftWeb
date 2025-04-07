@@ -19,3 +19,4 @@ require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
 Route::get('/Isocompta', [ServiceController::class, 'isocompta'])->name('services.isocompta');
+Route::get('/Isogescom', [ServiceController::class, 'isogescom'])->name('services.isogescom');

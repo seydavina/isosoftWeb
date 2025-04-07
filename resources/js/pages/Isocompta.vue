@@ -96,6 +96,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <!-- Navbar pour le retour vers l'accueil -->
   <Navbar />
 
   <section
