@@ -1,12 +1,16 @@
 {
     "version": 2,
-    "framework": "laravel",
+    "framework": "vite",
     "functions": {
         "api/*.php": {
             "runtime": "vercel-php@0.6.0"
         }
     },
     "routes": [
+        {
+            "src": "/(css|js)/(.*)",
+            "dest": "/public/$1/$2"
+        },
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
@@ -27,5 +31,8 @@
         "SESSION_DRIVER": "cookie",
         "SSR_TEMP_PATH": "/tmp/ssr",
         "NODE_PATH": "node"
-    }
+    },
+    "buildCommand": "npm run build",
+    "outputDirectory": "public/build",
+    "devCommand": "npm run dev"
 }
