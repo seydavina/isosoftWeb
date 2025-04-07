@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Link } from "@inertiajs/vue3";
-import Navbar from "@/Components/Navbar.vue";
-import Footer from "@/Components/Footer.vue";
+import Navbar from "@/components/NavbarExt.vue";
+import Footer from "@/components/Footer.vue";
 import { onMounted } from "vue";
 
 const features = {
@@ -115,12 +115,6 @@ onMounted(async () => {
       <!-- Overlay décoratif -->
       <div class="absolute inset-0 overflow-hidden opacity-10">
         <div class="absolute inset-0 bg-grid-pattern transform rotate-12 scale-150"></div>
-      </div>
-
-      <!-- En-tête avec info utilisateur -->
-      <div class="absolute top-4 right-4 text-sm text-gray-600">
-        <p>Utilisateur: {{ currentUser }}</p>
-        <p>Date: {{ currentDateTime }}</p>
       </div>
 
       <!-- Contenu principal -->
