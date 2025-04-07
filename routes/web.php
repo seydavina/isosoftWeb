@@ -18,4 +18,4 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
-Route::get('/services/Isocompta', [ServiceController::class, 'isocompta'])->name('services.isocompta');
+Route::get('/Isocompta', [ServiceController::class, 'isocompta'])->name('services.isocompta');

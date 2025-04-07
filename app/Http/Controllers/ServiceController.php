@@ -9,6 +9,6 @@ class ServiceController extends Controller
 {
     public function isocompta()
     {
-        return Inertia::render('services/Isocompta');
+        return Inertia::render('Isocompta');
     }
 }

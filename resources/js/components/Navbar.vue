@@ -7,7 +7,7 @@ const isServicesDropdownOpen = ref(false);
 let dropdownCloseTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const services = [
-  { title: "ISOCOMPTA", href: "/services/Isocompta" },
+  { title: "ISOCOMPTA", href: "/Isocompta" },
   { title: "ISOGESCOM", href: "/services/isogescom" },
   { title: "ISOPAIE", href: "/services/isopaie" }, // Correction du typo
   { title: "ISOETATFIN", href: "/services/isoetatfin" },
