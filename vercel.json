@@ -1,29 +1,34 @@
 {
     "version": 2,
-    "framework": "vite",
-    "buildCommand": "composer install --optimize-autoloader --no-dev && php artisan config:cache && php artisan route:cache",
-    "outputDirectory": "public",
-    "devCommand": "npm run dev",
+    "framework": null,
     "functions": {
         "api/index.php": {
             "runtime": "vercel-php@0.6.0"
         }
     },
+    
     "routes": [
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
     ],
+
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://isosoft-web.vercel.app",
-        "DB_CONNECTION": "mysql",
-        "DB_HOST": "localhost",
-        "DB_PORT": "3306",
-        "DB_DATABASE": "i_website",
-        "DB_USERNAME": "root",
-        "DB_PASSWORD": "root"
+        "APP_DEBUG": "true",
+        "APP_URL": "https://isosoft.vercel.app",
+        
+        
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "VIEW_COMPILED_PATH": "/tmp",
+ 
+        "CACHE_DRIVER": "array",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie"
     }
 }
