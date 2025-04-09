@@ -27,4 +27,37 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist  # Le dossier où votre application est générée après le build
-          branch: gh-pages  # La branche où sera déployé le site
+          branch: gh-pages  # La branche où sera déployé le sitejobs:
+            build-and-deploy:
+              runs-on: ubuntu-latest
+              steps:
+                - name: Checkout 🛎️
+                  uses: actions/checkout@v3
+          
+                - name: Setup Node.js
+                  uses: actions/setup-node@v3
+                  with:
+                    node-version: '18'
+                    cache: 'npm'
+          
+                # Add this step to set up PHP
+                - name: Setup PHP
+                  uses: shivammathur/setup-php@v2
+                  with:
+                    php-version: '8.1' # Adjust the PHP version to match your project requirements
+                    tools: composer
+          
+                # Add this step to install PHP dependencies
+                - name: Install PHP dependencies
+                  run: composer install --no-dev --optimize-autoloader
+          
+                - name: Install and Build 🔧
+                  run: |
+                    npm install
+                    npm run build
+          
+                - name: Deploy 🚀
+                  uses: JamesIves/github-pages-deploy-action@v4
+                  with:
+                    folder: dist
+                    branch: gh-pages
