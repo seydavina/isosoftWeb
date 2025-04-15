@@ -19,6 +19,10 @@ require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
 Route::get('/Isopaie', [ServiceController::class, 'isopaie'])->name('services.isopaie');
+Route::get('/Isoimmo', [ServiceController::class, 'isoimmo'])->name('services.isoimmo');
+Route::get('/AutresModules', [ServiceController::class, 'autres'])->name('services.autres');
+Route::get('/Isobudget', [ServiceController::class, 'isobudget'])->name('services.isobudget');
 Route::get('/Isocompta', [ServiceController::class, 'isocompta'])->name('services.isocompta');
 Route::get('/Isogescom', [ServiceController::class, 'isogescom'])->name('services.isogescom');
 Route::get('/Isoetatfin', [ServiceController::class, 'isoetatfin'])->name('services.isoetatfin');
+Route::get('/Isogescole', [ServiceController::class, 'isogescole'])->name('services.isogescole');

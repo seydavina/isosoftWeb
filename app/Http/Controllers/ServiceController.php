@@ -26,4 +26,23 @@ class ServiceController extends Controller
     {
         return Inertia::render('Isoetatfin');
     }
+
+    public function isogescole()
+    {
+        return Inertia::render('Isogescole');
+    }
+
+    public function isoimmo()
+    {
+        return Inertia::render('Isoimmo');
+    }
+
+    public function isobudget()
+    {
+        return Inertia::render('Isobudget');
+    }
+    public function autres()
+    {
+        return Inertia::render('AutresModules');
+    }
 }
