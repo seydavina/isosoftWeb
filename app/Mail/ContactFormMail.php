@@ -12,7 +12,7 @@ class ContactFormMail extends Mailable
 
     public $data;
 
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -20,6 +20,7 @@ class ContactFormMail extends Mailable
     public function build()
     {
         return $this->subject('Nouveau message de contact')
-                    ->markdown('emails.contact-form');
+                    ->view('emails.contact')
+                    ->with('data', $this->data);
     }
-} 
+}

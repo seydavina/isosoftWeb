@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3';
-import { ref, onMounted, onUnmounted } from 'vue';
-import Navbar from '@/components/Navbar.vue';
-import Hero from '@/components/Hero.vue';
-import Services from '@/components/Services.vue';
 import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
 import Footer from '@/components/Footer.vue';
+import Hero from '@/components/Hero.vue';
+import Navbar from '@/components/Navbar.vue';
+import Partenaire from '@/components/Partenaire.vue';
+import Services from '@/components/Services.vue';
+import { Head } from '@inertiajs/vue3';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const currentSection = ref(0);
-const sections = ['hero', 'services', 'about', 'contact'];
+const sections = ['hero', 'services', 'about', 'contact', 'partenaire'];
 const isScrolling = ref(false);
 const progress = ref(0);
 
@@ -18,12 +19,12 @@ const scrollToSection = (index: number) => {
     if (isScrolling.value) return;
     isScrolling.value = true;
     currentSection.value = index;
-    
+
     const section = document.getElementById(sections[index]);
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
     }
-    
+
     setTimeout(() => {
         isScrolling.value = false;
     }, 1000);
@@ -32,14 +33,14 @@ const scrollToSection = (index: number) => {
 // Gestion du défilement
 const handleScroll = () => {
     if (isScrolling.value) return;
-    
+
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
-    
+
     // Mise à jour de la barre de progression
     progress.value = (scrollPosition / (docHeight - windowHeight)) * 100;
-    
+
     sections.forEach((section, index) => {
         const element = document.getElementById(section);
         if (element) {
@@ -53,10 +54,10 @@ const handleScroll = () => {
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    
+
     // Initialiser la barre de progression
     setTimeout(handleScroll, 100);
-    
+
     // Ajouter des classes d'animation aux éléments
     document.querySelectorAll('.animate-on-enter').forEach((el, index) => {
         el.classList.add(`delay-${index % 6}`);
@@ -70,71 +71,83 @@ onUnmounted(() => {
 
 <template>
     <Head title="ISOSOFT - Solutions de Gestion d'Entreprise" />
-    
+
     <!-- Barre de progression -->
     <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
-    
+
     <div class="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
         <Navbar :current-section="currentSection" />
-        
+
         <main class="relative">
-            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
-            <div class="absolute inset-0 bg-gradient-radial from-gray-900/5 via-transparent to-transparent"></div>
-            
+            <div class="bg-grid-pattern absolute inset-0 opacity-5"></div>
+            <div class="bg-gradient-radial absolute inset-0 from-gray-900/5 via-transparent to-transparent"></div>
+
             <!-- Sections avec transitions améliorées -->
             <div class="relative">
-                <section 
-                    id="hero" 
-                    class="section-transition min-h-screen flex items-center justify-center py-20"
-                    :class="{'active-section': currentSection === 0}"
+                <section
+                    id="hero"
+                    class="section-transition flex min-h-screen items-center justify-center py-20"
+                    :class="{ 'active-section': currentSection === 0 }"
                 >
-                    <div class="container mx-auto px-6 page-section">
+                    <div class="page-section container mx-auto px-6">
                         <Hero />
                     </div>
                 </section>
-                
-                <section 
-                    id="services" 
-                    class="section-transition min-h-screen flex items-center justify-center py-20"
-                    :class="{'active-section': currentSection === 1}"
+
+                <section
+                    id="services"
+                    class="section-transition flex min-h-screen items-center justify-center py-20"
+                    :class="{ 'active-section': currentSection === 1 }"
                 >
-                    <div class="container mx-auto px-6 page-section">
+                    <div class="page-section container mx-auto px-6">
                         <Services />
                     </div>
                 </section>
-                
-                <section 
-                    id="about" 
-                    class="section-transition min-h-screen flex items-center justify-center py-20"
-                    :class="{'active-section': currentSection === 2}"
+
+                <section
+                    id="about"
+                    class="section-transition flex min-h-screen items-center justify-center py-20"
+                    :class="{ 'active-section': currentSection === 2 }"
                 >
-                    <div class="container mx-auto px-6 page-section">
+                    <div class="page-section container mx-auto px-6">
                         <About />
                     </div>
                 </section>
-                
-                <section 
-                    id="contact" 
-                    class="section-transition min-h-screen flex items-center justify-center py-20"
-                    :class="{'active-section': currentSection === 3}"
+
+                <section
+                    id="contact"
+                    class="section-transition flex min-h-screen items-center justify-center py-20"
+                    :class="{ 'active-section': currentSection === 3 }"
                 >
-                    <div class="container mx-auto px-6 page-section">
+                    <div class="page-section container mx-auto px-6">
                         <Contact />
+                    </div>
+                </section>
+
+                <section
+                    id="partenaire"
+                    class="section-transition flex min-h-screen items-center justify-center py-20"
+                    :class="{ 'active-section': currentSection === 4 }"
+                >
+                    <div class="page-section container mx-auto px-2">
+                        <Partenaire />
                     </div>
                 </section>
             </div>
 
             <!-- Pagination -->
-            <div class="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
+            <div class="fixed right-8 top-1/2 z-50 hidden -translate-y-1/2 lg:block">
                 <nav class="flex flex-col space-y-4">
-                    <button 
-                        v-for="(section, index) in sections" 
+                    <button
+                        v-for="(section, index) in sections"
                         :key="section"
                         @click="scrollToSection(index)"
-                        class="w-3 h-3 rounded-full transition-all duration-300 relative group"
-                        :class="currentSection === index ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'"
+                        class="group relative h-3 w-3 rounded-full transition-all duration-300"
+                        :class="currentSection === index ? 'scale-125 bg-blue-600' : 'bg-gray-300 hover:bg-gray-400'"
                     >
-                        <span class="absolute -left-24 top-1/2 -translate-y-1/2 text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                        <span
+                            class="absolute -left-24 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-medium text-gray-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        >
                             {{ section.charAt(0).toUpperCase() + section.slice(1) }}
                         </span>
                     </button>
@@ -157,8 +170,8 @@ onUnmounted(() => {
 
 /* Grille de fond */
 .bg-grid-pattern {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 24px 24px;
 }
 
@@ -182,8 +195,9 @@ onUnmounted(() => {
 /* Transitions entre les sections */
 .section-transition {
     position: relative;
-    transition: opacity var(--transition-slow) var(--bezier-smooth),
-                transform var(--transition-slow) var(--bezier-smooth);
+    transition:
+        opacity var(--transition-slow) var(--bezier-smooth),
+        transform var(--transition-slow) var(--bezier-smooth);
 }
 
 /* Section active */
@@ -196,8 +210,9 @@ onUnmounted(() => {
 .page-section {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity var(--transition-slow) var(--bezier-smooth),
-                transform var(--transition-slow) var(--bezier-smooth);
+    transition:
+        opacity var(--transition-slow) var(--bezier-smooth),
+        transform var(--transition-slow) var(--bezier-smooth);
 }
 
 /* Transitions fluides pour le scroll */
@@ -224,12 +239,24 @@ html {
 }
 
 /* Délais d'animation séquentiels */
-.delay-0 { animation-delay: 0s; }
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
-.delay-5 { animation-delay: 0.5s; }
+.delay-0 {
+    animation-delay: 0s;
+}
+.delay-1 {
+    animation-delay: 0.1s;
+}
+.delay-2 {
+    animation-delay: 0.2s;
+}
+.delay-3 {
+    animation-delay: 0.3s;
+}
+.delay-4 {
+    animation-delay: 0.4s;
+}
+.delay-5 {
+    animation-delay: 0.5s;
+}
 
 /* Effet de pulsation pour la pagination */
 @keyframes pulse {
@@ -248,7 +275,7 @@ html {
 }
 
 /* Appliquer l'animation de pulsation au point actif de la pagination */
-[class*="rounded-full"].scale-125 {
+[class*='rounded-full'].scale-125 {
     animation: pulse 2s infinite;
 }
 </style>
